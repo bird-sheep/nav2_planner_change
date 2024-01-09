@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.5)
+project(sub_try VERSION 0.1.0 LANGUAGES C CXX)
+
+include(CTest)
+enable_testing()
+
+
+add_executable(sub_try route2.cpp)
+add_subdirectory(src/Project1)
+target_include_directories(sub_try PUBLIC
+                            "src/Project1")
+
+target_link_libraries(sub_try PUBLIC
+                        get_path)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
